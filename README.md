@@ -1,2 +1,2 @@
 # tp-comp-keyboard-fnlk-switch
-FnLk switch for Lenovo ThinkPad Compact USB Keyboard 
+Gnome Shell Extension - FnLk switch for Lenovo ThinkPad Compact USB Keyboard 
