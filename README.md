@@ -15,6 +15,14 @@ Notice that (Gnome) user should have write access to `/sys/bus/hid/devices/*17EF
 cat <<'EOF' >  /etc/udev/rules.d/99-thinkpad-compact-keyboard.rules 
 SUBSYSTEM=="hid", ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="604*", \
     TEST == "/sys/$devpath/fn_lock", \
+    RUN += "/bin/sh -c 'chown change_to_your_username \"/sys/$devpath/fn_lock\"'"
+EOF
+```
+or
+```
+cat <<'EOF' >  /etc/udev/rules.d/99-thinkpad-compact-keyboard.rules 
+SUBSYSTEM=="hid", ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="604*", \
+    TEST == "/sys/$devpath/fn_lock", \
     RUN += "/bin/sh -c 'chmod 0666 \"/sys/$devpath/fn_lock\"'"
 EOF
 ```
