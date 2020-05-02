@@ -10,3 +10,11 @@ Fn is locked (FnLk)\
 ![screenshot01](https://github.com/goloshubov/tp-comp-keyboard-fnlk-switch/blob/master/about/screenshots/ss01.png)
 
 Notice that (Gnome) user should have write access to `/sys/bus/hid/devices/*17EF\:604*/fn_loc`
+
+```bash
+cat <<'EOF' >  /etc/udev/rules.d/99-thinkpad-compact-keyboard.rules 
+SUBSYSTEM=="hid", ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="604*", \
+    TEST == "/sys/$devpath/fn_lock", \
+    RUN += "/bin/sh -c 'chmod 0666 \"/sys/$devpath/fn_lock\"'"
+EOF
+```
