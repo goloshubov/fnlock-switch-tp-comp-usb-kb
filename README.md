@@ -11,7 +11,7 @@ Fn is locked (FnLk)\
 
 Notice that (Gnome) user should have write access to `/sys/bus/hid/devices/*17EF\:604*/fn_loc`
 
-```bash
+```
 cat <<'EOF' >  /etc/udev/rules.d/99-thinkpad-compact-keyboard.rules 
 SUBSYSTEM=="hid", ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="604*", \
     TEST == "/sys/$devpath/fn_lock", \
