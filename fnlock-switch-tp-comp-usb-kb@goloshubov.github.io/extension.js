@@ -22,7 +22,7 @@ function init(metadata) {
 
 function toggleFNLK() {
   let [ok, out, err, exit] = GLib.spawn_command_line_sync("sh -c '{ grep -q 1 /sys/bus/hid/devices/*17EF\:604*/fn_lock && echo 0 || echo 1; } | tee /sys/bus/hid/devices/*17EF\:604*/fn_lock'");
-	
+
   if (ByteArray.toString(out).includes('0')) {
     icon.set_gicon(gicon_unlocked)
   } else {
@@ -32,22 +32,22 @@ function toggleFNLK() {
 
 
 function enable() {
-  button = new PanelMenu.Button(0.0);  
+  button = new PanelMenu.Button(0.0);
   icon = new St.Icon({ style_class: 'system-status-icon' });
-  gicon_locked = Gio.icon_new_for_string(Me.path + "/icons/" + FNLOCKED_ICON);  
+  gicon_locked = Gio.icon_new_for_string(Me.path + "/icons/" + FNLOCKED_ICON);
   gicon_unlocked = Gio.icon_new_for_string(Me.path + "/icons/" + FNUNLOCKED_ICON);
-  
-  let [ok, out, err, exit] = GLib.spawn_command_line_sync("sh -c 'cat /sys/bus/hid/devices/*17EF\:604*/fn_lock'");  
-  
+
+  let [ok, out, err, exit] = GLib.spawn_command_line_sync("sh -c 'cat /sys/bus/hid/devices/*17EF\:604*/fn_lock'");
+
   if (ByteArray.toString(out).includes('0')) {
-    icon.set_gicon(gicon_locked)    
-  } else {
     icon.set_gicon(gicon_unlocked)
+  } else {
+    icon.set_gicon(gicon_locked)
   }
-  
+
   button.actor.add_actor(icon);
   button.actor.connect('button-press-event', toggleFNLK);
-  Main.panel.addToStatusArea('Test', button);	
+  Main.panel.addToStatusArea('Test', button);
 }
 
 
