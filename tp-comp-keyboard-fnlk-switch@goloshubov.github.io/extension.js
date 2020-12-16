@@ -24,9 +24,9 @@ function toggleFNLK() {
   let [ok, out, err, exit] = GLib.spawn_command_line_sync("sh -c '{ grep -q 1 /sys/bus/hid/devices/*17EF\:604*/fn_lock && echo 0 || echo 1; } | tee /sys/bus/hid/devices/*17EF\:604*/fn_lock'");
 	
   if (ByteArray.toString(out).includes('0')) {
-    icon.set_gicon(gicon_locked)
-  } else {
     icon.set_gicon(gicon_unlocked)
+  } else {
+    icon.set_gicon(gicon_locked)
   }
 }
 
