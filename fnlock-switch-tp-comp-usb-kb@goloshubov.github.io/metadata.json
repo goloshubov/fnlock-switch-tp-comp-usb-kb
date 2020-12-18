@@ -2,7 +2,7 @@
   "uuid": "fnlock-switch-tp-comp-usb-kb@goloshubov.github.io",
   "name": "FnLock switch (ThinkPad Compact USB Keyboard) ",
   "description": "FnLock switch for Lenovo ThinkPad Compact USB Keyboard ",
-  "version": 1,
+  "version": 1.1,
   "shell-version": [ "3.36", "3.38" ],
   "url": "https://github.com/goloshubov/fnlock-switch-tp-comp-usb-kb"
 }
