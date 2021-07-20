@@ -1,5 +1,5 @@
 # fnlock-switch-tp-comp-usb-kb
-Gnome Shell Extension - FnLock switch for Lenovo ThinkPad Compact USB Keyboard
+Gnome Shell Extension - FnLock switch (ThinkPad Compact USB Keyboard) - https://extensions.gnome.org/extension/3939/fnlock-switch-thinkpad-compact-usb-keyboard/
 
 Why. There is an issue with Lenovo ThinkPad Compact USB Keyboard - FnLk doesn't work by pressing Fn+Esc in Linux. Manual toggling by writing 1|0 into `/sys/bus/hid/devices/*17EF\:604*/fn_loc` is possible though, thanks to: https://github.com/lentinj/tp-compact-keyboard.
 
