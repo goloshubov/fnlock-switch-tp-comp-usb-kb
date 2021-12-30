@@ -26,8 +26,3 @@ SUBSYSTEM=="hid", ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="604*", \
     RUN += "/bin/sh -c 'chmod 0666 \"/sys/$devpath/fn_lock\"'"
 EOF
 ```
-
-
-\
-\
-I use wireless Thinkpad Trackpoint Keyboard II now. It has no FnLock issue. So I have stopped updating this project with every new GNOME version. If this extension stops working because of an outdated version, reach me out (e.g. PR or issue), or consider using the /org/gnome/shell/disable-extension-version-validation (dconf) variable.
