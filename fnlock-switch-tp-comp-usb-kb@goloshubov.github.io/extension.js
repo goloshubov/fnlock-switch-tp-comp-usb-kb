@@ -20,7 +20,7 @@ function init(metadata) {
 }
 
 
-function toggleFNLK() {
+function toggleFnLock() {
   let [ok, out, err, exit] = GLib.spawn_command_line_sync("sh -c '{ grep -q 1 /sys/bus/hid/devices/*17EF\:604*/fn_lock && echo 0 || echo 1; } | tee /sys/bus/hid/devices/*17EF\:604*/fn_lock'");
 
   if (ByteArray.toString(out).includes('0')) {
@@ -46,11 +46,15 @@ function enable() {
   }
 
   button.actor.add_actor(icon);
-  button.actor.connect('button-press-event', toggleFNLK);
-  Main.panel.addToStatusArea('Test', button);
+  button.actor.connect('button-press-event', toggleFnLock);
+  Main.panel.addToStatusArea('FnLock', button);
 }
 
 
 function disable() {
   button.destroy();
+  button = null;
+  icon = null;
+  gicon_locked = null;
+  gicon_unlocked = null;
 }
