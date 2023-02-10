@@ -13,7 +13,7 @@ Fn is locked (FnLk)\
 There is an issue with Lenovo ThinkPad Compact USB Keyboard - FnLk doesn't work by pressing Fn+Esc in Linux. Manual toggling by writing 1|0 into `/sys/bus/hid/devices/*17EF\:604*/fn_loc` is possible though, thanks to: https://github.com/lentinj/tp-compact-keyboard.
 
 ## Configuration
-Notice that (Gnome) user should have write access to `/sys/bus/hid/devices/*17EF\:604*/fn_loc`
+Notice that (GNOME) user should have write access to `/sys/bus/hid/devices/*17EF\:604*/fn_loc`
 
 ```
 cat <<'EOF' >  /etc/udev/rules.d/99-thinkpad-compact-keyboard.rules 
