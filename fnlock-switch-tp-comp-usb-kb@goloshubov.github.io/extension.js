@@ -6,7 +6,6 @@ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 import * as ExtensionUtils from 'resource:///org/gnome/shell/misc/extensionUtils.js';
 
-const ByteArray = imports.byteArray;
 const FNLOCKED_ICON = "fnlk.svg";
 const FNUNLOCKED_ICON = "fn.svg";
 
@@ -20,8 +19,7 @@ export default class FnLockExtension extends Extension {
       this._icon = new St.Icon({ style_class: 'system-status-icon' });
 
       let [ok, out, err, exit] = GLib.spawn_command_line_sync("sh -c 'cat /sys/bus/hid/devices/*17EF\:604*/fn_lock'");
-
-      if (ByteArray.toString(out).includes('0')) {
+      if (out.toString().includes('0')) {
         this._icon.set_gicon(gicon_unlocked)
       } else {
         this._icon.set_gicon(gicon_locked)
@@ -30,7 +28,7 @@ export default class FnLockExtension extends Extension {
       this._button.actor.add_actor(this._icon);
       this._button.actor.connect('button-press-event', (item, event) => {
         let [ok, out, err, exit] = GLib.spawn_command_line_sync("sh -c '{ grep -q 1 /sys/bus/hid/devices/*17EF\:604*/fn_lock && echo 0 || echo 1; } | tee /sys/bus/hid/devices/*17EF\:604*/fn_lock'");
-        if (ByteArray.toString(out).includes('0')) {
+        if (out.toString().includes('0')) {
           this._icon.set_gicon(gicon_unlocked)
         } else {
           this._icon.set_gicon(gicon_locked)
