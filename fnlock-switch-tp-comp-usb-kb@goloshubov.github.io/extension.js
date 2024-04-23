@@ -25,7 +25,7 @@ export default class FnLockExtension extends Extension {
         this._icon.set_gicon(gicon_locked)
       }
 
-      this._button.actor.add_actor(this._icon);
+      this._button.actor.add_child(this._icon);
       this._button.actor.connect('button-press-event', (item, event) => {
         let [ok, out, err, exit] = GLib.spawn_command_line_sync("sh -c '{ grep -q 1 /sys/bus/hid/devices/*17EF\:604*/fn_lock && echo 0 || echo 1; } | tee /sys/bus/hid/devices/*17EF\:604*/fn_lock'");
         if (out.toString().includes('0')) {
