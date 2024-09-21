@@ -12,7 +12,7 @@ FnLock is inactive (unlocked)\
 FnLock not found\
 ![screenshot01](https://github.com/goloshubov/tp-comp-keyboard-fnlk-switch/blob/master/about/screenshots/none.png)
 
-Keybinding:\
+Keybinding by default:\
 \<Control> + Escape
 
 Custom keybinding workaround (TBD: prefs)
