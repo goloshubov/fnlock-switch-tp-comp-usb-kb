@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="gnome-shell-extensions">
+    <schema id="org.gnome.shell.extensions.fnlock" path="/org/gnome/shell/extensions/fnlock/">
+        <key name="keybinding" type="as">
+            <default><![CDATA[['<Control>Escape']]]></default>
+            <summary>Hotkey to switch FnLock.</summary>
+        </key>
+    </schema>
+</schemalist>
