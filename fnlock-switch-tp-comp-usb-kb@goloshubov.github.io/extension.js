@@ -55,7 +55,7 @@ export default class FnLockExtension extends Extension {
         [
           "sh",
           "-c",
-          "test -f /sys/bus/hid/devices/0003:17EF*/fn_lock && \
+          "test -f /sys/bus/hid/devices/*17EF:604*/fn_lock && \
             { grep -q 1 /sys/bus/hid/devices/*17EF:604*/fn_lock && echo 0 || echo 1; } | tee /sys/bus/hid/devices/*17EF:604*/fn_lock",
         ],
         Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE,
