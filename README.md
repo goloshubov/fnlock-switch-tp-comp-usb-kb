@@ -15,7 +15,7 @@ FnLock not found\
 Keybinding:\
 \<Control> + Escape
 
-Custom keybinding can be set through dcon editor (TBD: prefs)
+Custom keybinding workaround (TBD: prefs)
 ```bash
 cat << EOF | dconf load /org/gnome/shell/extensions/fnlock/
 [/]
