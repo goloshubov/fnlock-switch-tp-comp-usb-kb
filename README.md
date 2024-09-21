@@ -15,6 +15,14 @@ FnLock not found\
 Keybinding:\
 \<Control> + Escape
 
+Custom keybinding can be set through dcon editor (TBD: prefs)
+```bash
+cat << EOF | dconf load /org/gnome/shell/extensions/fnlock/
+[/]
+keybinding=['<Control>Escape']
+EOF
+```
+
 ## Why?
 There is an issue with Lenovo ThinkPad Compact USB Keyboard - FnLk doesn't work by pressing Fn+Esc in Linux. Manual toggling by writing 1|0 into `/sys/bus/hid/devices/*17EF\:604*/fn_loc` is possible though, thanks to: https://github.com/lentinj/tp-compact-keyboard.
 
