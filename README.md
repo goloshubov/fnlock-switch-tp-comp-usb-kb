@@ -3,11 +3,14 @@ GNOME Shell Extension for Lenovo ThinkPad Compact USB Keyboard that adds switch 
 https://extensions.gnome.org/extension/3939/fnlock-switch-thinkpad-compact-usb-keyboard/
 
 \
-Fn is unlocked\
-![screenshot00](https://github.com/goloshubov/tp-comp-keyboard-fnlk-switch/blob/master/about/screenshots/ss00.png)
+FnLock is active (locked)\
+![screenshot01](https://github.com/goloshubov/tp-comp-keyboard-fnlk-switch/blob/master/about/screenshots/locked.png)
 
-Fn is locked (FnLk)\
-![screenshot01](https://github.com/goloshubov/tp-comp-keyboard-fnlk-switch/blob/master/about/screenshots/ss01.png)
+FnLock is inactive (unlocked)\
+![screenshot00](https://github.com/goloshubov/tp-comp-keyboard-fnlk-switch/blob/master/about/screenshots/unlocked.png)
+
+FnLock not found\
+![screenshot01](https://github.com/goloshubov/tp-comp-keyboard-fnlk-switch/blob/master/about/screenshots/none.png)
 
 Keybinding:\
 \<Control> + Escape
