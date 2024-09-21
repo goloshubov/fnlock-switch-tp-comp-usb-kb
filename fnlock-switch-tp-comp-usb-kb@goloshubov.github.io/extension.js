@@ -65,6 +65,7 @@ export default class FnLockExtension extends Extension {
       logError(e);
     }
   }
+
   enable() {
     this._button = new PanelMenu.Button(0.0);
     this._icon = new St.Icon({ style_class: "system-status-icon" });
