@@ -27,7 +27,7 @@ EOF
 There is an issue with Lenovo ThinkPad Compact USB Keyboard - FnLk doesn't work by pressing Fn+Esc in Linux. Manual toggling by writing 1|0 into `/sys/bus/hid/devices/*17EF\:604*/fn_lock` is possible though, thanks to: https://github.com/lentinj/tp-compact-keyboard.
 
 ## Configuration
-It needs write access to `/sys/bus/hid/devices/*17EF\:604*/fn_lock` and to `/dev/fn_lock` symlink wich must be created. An example udev rule:
+It needs write access to `/sys/bus/hid/devices/*17EF\:604*/fn_lock` and to `/dev/fnlock-switch-tp-comp-usb-kb` symlink wich must be created. An example udev rule:
 
 ```bash
 cat <<'EOF' >  /etc/udev/rules.d/99-thinkpad-compact-keyboard.rules
