@@ -24,21 +24,13 @@ EOF
 ```
 
 ## Why?
-There is an issue with Lenovo ThinkPad Compact USB Keyboard - FnLk doesn't work by pressing Fn+Esc in Linux. Manual toggling by writing 1|0 into `/sys/bus/hid/devices/*17EF\:604*/fn_loc` is possible though, thanks to: https://github.com/lentinj/tp-compact-keyboard.
+There is an issue with Lenovo ThinkPad Compact USB Keyboard - FnLk doesn't work by pressing Fn+Esc in Linux. Manual toggling by writing 1|0 into `/sys/bus/hid/devices/*17EF\:604*/fn_lock` is possible though, thanks to: https://github.com/lentinj/tp-compact-keyboard.
 
 ## Configuration
-Notice that (GNOME) user should have write access to `/sys/bus/hid/devices/*17EF\:604*/fn_loc`
+It needs write access to `/sys/bus/hid/devices/*17EF\:604*/fn_lock` and to `/dev/fn_lock` symlink wich must be created. An example udev rule:
 
-```
+```bash
 cat <<'EOF' >  /etc/udev/rules.d/99-thinkpad-compact-keyboard.rules
-SUBSYSTEM=="hid", ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="604*", \
-    RUN += "/bin/sh -c 'chown change_to_your_username \"/sys/$devpath/fn_lock\"'"
-EOF
-```
-or
-```
-cat <<'EOF' >  /etc/udev/rules.d/99-thinkpad-compact-keyboard.rules
-SUBSYSTEM=="hid", ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="604*", \
-    RUN += "/bin/sh -c 'chmod 0660 \"/sys/$devpath/fn_lock\"'"
+SUBSYSTEM=="hid", ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="6047", RUN += "/bin/sh -c 'FILE=$(find /sys/devices/ -name fn_lock 2>/dev/null); test -f $FILE && chmod 0666 $FILE && ln -f -s $FILE /dev/fnlock-switch-tp-comp-usb-kb'"
 EOF
 ```
