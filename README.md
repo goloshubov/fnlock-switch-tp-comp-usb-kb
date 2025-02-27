@@ -15,21 +15,6 @@ FnLock is inactive (unlocked)\
 FnLock not found\
 ![screenshot01](https://github.com/goloshubov/tp-comp-keyboard-fnlk-switch/blob/master/about/screenshots/none.png)
 
-## Extension's keybinding
-<kbd> Ctrl </kbd> + <kbd> Esc </kbd>
-
-Custom keybinding workaround (TBD: prefs)
-```bash
-cat << EOF | dconf load /org/gnome/shell/extensions/fnlock/
-[/]
-keybinding=['<Control>Escape']
-EOF
-```
-
-## Why?
-1) It is FnLock current status indicator
-2) There is an issue with Lenovo ThinkPad Compact USB Keyboard, Fn+Esc isn't working in Linux. Manual toggling by writing 1|0 into `/sys/bus/hid/devices/*17EF\:604*/fn_lock` is possible though.
-
 ## Configuration
 It needs write access to `/sys/.../fn_lock`, and `/dev/fnlock-switch` symlink must exist. An example udev rule:
 
@@ -38,3 +23,16 @@ cat <<'EOF' >  /etc/udev/rules.d/99-thinkpad-compact-keyboard.rules
 SUBSYSTEM=="input", DRIVERS=="lenovo", RUN += "/bin/sh -c 'FILE=$(find /sys/devices/ -name fn_lock 2>/dev/null); test -f $FILE && chown <CHANGE_USERNAME> $FILE && ln -f -s $FILE /dev/fnlock-switch'"
 EOF
 ```
+## Extension's keybinding
+<kbd> Ctrl </kbd> + <kbd> Esc </kbd>
+
+## Custom keybinding workaround (TBD: prefs)
+```bash
+cat << EOF | dconf load /org/gnome/shell/extensions/fnlock/
+[/]
+keybinding=['<Control>Escape']
+EOF
+```
+## Why?
+1) It is FnLock current status indicator
+2) There is an issue with Lenovo ThinkPad Compact USB Keyboard, Fn+Esc isn't working in Linux. Manual toggling by writing 1|0 into `/sys/bus/hid/devices/*17EF\:604*/fn_lock` is possible though.
