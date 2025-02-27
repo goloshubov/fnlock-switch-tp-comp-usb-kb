@@ -26,7 +26,8 @@ EOF
 ## Extension's keybinding
 <kbd> Ctrl </kbd> + <kbd> Esc </kbd>
 
-## Custom keybinding workaround (TBD: prefs)
+## Custom keybinding workaround
+TBD: prefs
 ```bash
 cat << EOF | dconf load /org/gnome/shell/extensions/fnlock/
 [/]
