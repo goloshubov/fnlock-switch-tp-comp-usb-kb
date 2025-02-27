@@ -1,6 +1,6 @@
 # fnlock-switch-tp-comp-usb-kb
 GNOME shell extension that adds FnLock toggle button (indicator) to GNOME top panel.
-Both Lenovo ThinkPad Compact USB and ThinkPad Trackpoint II (bluetooth) keyboards are supported.
+Both Lenovo ThinkPad Compact USB Keyboard and Lenovo ThinkPad Trackpoint Keyboard II (bluetooth) are supported.
 https://extensions.gnome.org/extension/3939/fnlock-switch-thinkpad-compact-usb-keyboard/
 
 \
