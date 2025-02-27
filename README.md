@@ -32,6 +32,6 @@ It needs write access to `/sys/bus/hid/devices/*17EF\:604*/fn_lock` and to `/dev
 
 ```bash
 cat <<'EOF' >  /etc/udev/rules.d/99-thinkpad-compact-keyboard.rules
-SUBSYSTEM=="input", DRIVERS=="lenovo", RUN += "/bin/sh -c 'FILE=$(find /sys/devices/ -name fn_lock 2>/dev/null); test -f $FILE && chmod 0666 $FILE && ln -f -s $FILE /dev/fnlock-switch'"
+SUBSYSTEM=="input", DRIVERS=="lenovo", RUN += "/bin/sh -c 'FILE=$(find /sys/devices/ -name fn_lock 2>/dev/null); test -f $FILE && chown <CHANGE_USERNAME> $FILE && ln -f -s $FILE /dev/fnlock-switch'"
 EOF
 ```
