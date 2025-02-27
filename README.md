@@ -25,6 +25,8 @@ EOF
 ```
 ## Keybinding
 Extension keybinding on USB and Bluetooth keyboards: <kbd> Ctrl </kbd> + <kbd> Esc </kbd>\
+It looks like there is no way to bind Fn button in keybindings, so Ctrl is fine too.
+
 Additionally, hardware keybinding on Bluetooth keyboard will work as well: <kbd> Fn </kbd> + <kbd> Esc </kbd>
 
 ## Custom keybinding
