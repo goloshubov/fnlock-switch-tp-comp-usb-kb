@@ -29,6 +29,7 @@ EOF
 ## Custom keybinding
 TBD: prefs
 ```bash
+# workaround
 cat << EOF | dconf load /org/gnome/shell/extensions/fnlock/
 [/]
 keybinding=['<Control>Escape']
