@@ -19,7 +19,7 @@ FnLock not found\
 It needs write access to `/sys/.../fn_lock`, and `/dev/fnlock-switch` symlink must exist. An example udev rule:
 
 ```bash
-cat <<'EOF' >  /etc/udev/rules.d/99-thinkpad-compact-keyboard.rules
+cat <<'EOF' >  /etc/udev/rules.d/99-thinkpad-keyboard.rules
 SUBSYSTEM=="input", DRIVERS=="lenovo", RUN += "/bin/sh -c 'FILE=$(find /sys/devices/ -name fn_lock 2>/dev/null); test -f $FILE && chown <CHANGE_USERNAME> $FILE && ln -f -s $FILE /dev/fnlock-switch'"
 EOF
 ```
