@@ -42,3 +42,7 @@ EOF
 1) FnLock current status indicator seems to be helpful
 2) Solution for ThinkPad Compact USB Keyboard issue, Fn+Esc isn't working in Linux.
    Manual toggling by writing 1|0 into `/sys/.../fn_lock` is possible though.
+
+## ☕
+If you like this GNOME extension, you may buy me a coffee sometime\
+https://www.donationalerts.com/r/dmitry_goloshubov
