@@ -5,5 +5,5 @@
   "url": "https://github.com/goloshubov/fnlock-switch-tp-comp-usb-kb",
   "uuid": "fnlock-switch-tp-comp-usb-kb@goloshubov.github.io",
   "settings-schema": "org.gnome.shell.extensions.fnlock",
-  "version": 15
+  "version": 16
 }

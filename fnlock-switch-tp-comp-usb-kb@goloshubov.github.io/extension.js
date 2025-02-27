@@ -12,7 +12,7 @@ import * as ExtensionUtils from "resource:///org/gnome/shell/misc/extensionUtils
 const FNLOCKED_ICON = "fnlk.svg";
 const FNUNLOCKED_ICON = "fn.svg";
 const NOFNLOCK_ICON = "none.svg";
-const FNLOCK_PATH = "/dev/fnlock-switch-tp-comp-usb-kb";
+const FNLOCK_PATH = "/dev/fnlock-switch";
 
 
 export default class FnLockExtension extends Extension {
@@ -107,7 +107,7 @@ export default class FnLockExtension extends Extension {
 
         // file monitor for fnlock_path (symlink)
         const file = Gio.File.new_for_path(FNLOCK_PATH);
-        this._fnlock_monitor = file.monitor_file(Gio.FileMonitorFlags.WATCH_MOVES, null);
+        this._fnlock_monitor = file.monitor_file(Gio.FileMonitorFlags.NONE, null);
         this._fnlock_monitor.connect("changed", () => {
             this.update_fnlock_monitor();
             //this.update_fnlock_icon();
@@ -116,8 +116,11 @@ export default class FnLockExtension extends Extension {
         // file monitor for fnlock_path (target)
         this.update_fnlock_monitor();
 
-        // periodic checking (in case the keyboard disconnected and fn_lock not found)
-        this._timeout = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 5, () => {
+        // periodic checking in case:
+        // a) usb/bt keyboard disconnected
+        // b) bt keyboard: fn_lcok manually switched. 
+        //    Issue (bluetooth kb only): fn_lock stat won't change, so monitor won't trigger therefore.
+        this._timeout = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 2, () => {
             this.update_fnlock_icon();
             return GLib.SOURCE_CONTINUE;
         }); 

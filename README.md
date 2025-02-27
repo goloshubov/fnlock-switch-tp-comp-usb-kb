@@ -1,5 +1,5 @@
 # fnlock-switch-tp-comp-usb-kb
-GNOME Shell Extension for Lenovo ThinkPad Compact USB Keyboard that adds switch FnLock button to GNOME top panel
+GNOME Shell Extension for Lenovo ThinkPad Compact Keyboards (USB or BT) that adds switch FnLock button (indicator) to GNOME top panel
 https://extensions.gnome.org/extension/3939/fnlock-switch-thinkpad-compact-usb-keyboard/
 
 \
@@ -24,13 +24,13 @@ EOF
 ```
 
 ## Why?
-There is an issue with Lenovo ThinkPad Compact USB Keyboard - FnLk doesn't work by pressing Fn+Esc in Linux. Manual toggling by writing 1|0 into `/sys/bus/hid/devices/*17EF\:604*/fn_lock` is possible though, thanks to: https://github.com/lentinj/tp-compact-keyboard.
+There is an issue with Lenovo ThinkPad Compact USB Keyboard - FnLk doesn't work by pressing Fn+Esc in Linux. Manual toggling by writing 1|0 into `/sys/bus/hid/devices/*17EF\:604*/fn_lock` is possible though.
 
 ## Configuration
 It needs write access to `/sys/bus/hid/devices/*17EF\:604*/fn_lock` and to `/dev/fnlock-switch-tp-comp-usb-kb` symlink wich must be created. An example udev rule:
 
 ```bash
 cat <<'EOF' >  /etc/udev/rules.d/99-thinkpad-compact-keyboard.rules
-SUBSYSTEM=="hid", ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="6047", RUN += "/bin/sh -c 'FILE=$(find /sys/devices/ -name fn_lock 2>/dev/null); test -f $FILE && chmod 0666 $FILE && ln -f -s $FILE /dev/fnlock-switch-tp-comp-usb-kb'"
+SUBSYSTEM=="input", DRIVERS=="lenovo", RUN += "/bin/sh -c 'FILE=$(find /sys/devices/ -name fn_lock 2>/dev/null); test -f $FILE && chmod 0666 $FILE && ln -f -s $FILE /dev/fnlock-switch'"
 EOF
 ```
