@@ -37,4 +37,4 @@ EOF
 ```
 ## Why?
 1) It is FnLock current status indicator
-2) There is an issue with Lenovo ThinkPad Compact USB Keyboard, Fn+Esc isn't working in Linux. Manual toggling by writing 1|0 into `/sys/bus/hid/devices/*17EF\:604*/fn_lock` is possible though.
+2) There is an issue with Lenovo ThinkPad Compact USB Keyboard, Fn+Esc isn't working in Linux. Manual toggling by writing 1|0 into `/sys/.../fn_lock` is possible though.
