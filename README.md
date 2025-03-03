@@ -40,7 +40,7 @@ EOF
 ```
 ## Why?
 1) FnLock current status indicator seems to be helpful
-2) Solution for ThinkPad Compact USB Keyboard issue, Fn+Esc isn't working in Linux.
+2) Solution for isssue with ThinkPad Compact USB Keyboard and Lenovo ThinkPad Trackpoint Keyboard II (2.4G wireless mode), when Fn+Esc isn't working in Linux.
    Manual toggling by writing 1|0 into `/sys/.../fn_lock` is possible though.
 
 ## ☕
