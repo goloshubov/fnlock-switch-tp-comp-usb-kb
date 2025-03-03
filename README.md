@@ -24,10 +24,10 @@ SUBSYSTEM=="input", DRIVERS=="lenovo", RUN += "/bin/sh -c 'FILE=$(find /sys/devi
 EOF
 ```
 ## Keybinding
-Extension keybinding for USB and Bluetooth keyboards is <kbd> Ctrl </kbd> + <kbd> Esc </kbd>\
-It looks like there is no way to bind Fn button in keybindings, so Ctrl is fine too.
+Extension's keybinding for both keyboards is <kbd> Ctrl </kbd> + <kbd> Esc </kbd>\
+It looks like there is no way to bind Fn button for keybindings, so Ctrl here is fine too.
 
-Additionally, stadard hardware keybinding on wireless keyboard (Bluetooth mode) will work as well: <kbd> Fn </kbd> + <kbd> Esc </kbd>
+The stadard hardware keybinding on wireless keyboard in Bluetooth mode will work as well: <kbd> Fn </kbd> + <kbd> Esc </kbd>
 
 ## Custom keybinding
 TBD: prefs
