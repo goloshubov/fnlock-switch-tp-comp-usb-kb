@@ -16,7 +16,7 @@ FnLock not found\
 ![screenshot01](https://github.com/goloshubov/tp-comp-keyboard-fnlk-switch/blob/master/about/screenshots/none.png)
 
 ## Configuration
-It needs write access to `/sys/.../fn_lock`, and `/dev/fnlock-switch` symlink must exist. An example udev rule:
+It requires write access to `/sys/.../fn_lock`, and `/dev/fnlock-switch` symlink must exist. An example udev rule:
 
 ```bash
 cat <<'EOF' >  /etc/udev/rules.d/99-thinkpad-keyboard.rules
