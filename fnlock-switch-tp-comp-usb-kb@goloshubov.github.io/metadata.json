@@ -1,9 +1,9 @@
 {
-  "description": "FnLock switch for Lenovo ThinkPad Compact USB Keyboard",
-  "name": "FnLock switch (ThinkPad Compact USB Keyboard)",
-  "shell-version": ["45", "46", "47", "48"],
-  "url": "https://github.com/goloshubov/fnlock-switch-tp-comp-usb-kb",
-  "uuid": "fnlock-switch-tp-comp-usb-kb@goloshubov.github.io",
-  "settings-schema": "org.gnome.shell.extensions.fnlock",
-  "version": 17
+    "description": "FnLock switch for Lenovo ThinkPad Compact USB Keyboard",
+    "name": "FnLock switch (ThinkPad Compact USB Keyboard)",
+    "shell-version": ["45", "46", "47", "48"],
+    "url": "https://github.com/goloshubov/fnlock-switch-tp-comp-usb-kb",
+    "uuid": "fnlock-switch-tp-comp-usb-kb@goloshubov.github.io",
+    "settings-schema": "org.gnome.shell.extensions.fnlock",
+    "version": 17
 }
