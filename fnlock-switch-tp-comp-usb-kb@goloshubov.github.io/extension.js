@@ -106,9 +106,10 @@ export default class FnLockExtension extends Extension {
         this.update_fnlock_icon();
 
         this._button.add_child(this._icon);
-        this._button.connect('button-press-event', () =>
-            this.switch_fnlock_state()
-        );
+        this._button.clear_actions();
+        this._button.connect('button-press-event', () => {
+            this.switch_fnlock_state();
+        });
 
         Main.panel.addToStatusArea('FnLock', this._button);
 
