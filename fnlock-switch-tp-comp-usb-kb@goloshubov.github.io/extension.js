@@ -70,23 +70,28 @@ export default class FnLockExtension extends Extension {
     }
 
     update_fnlock_monitor() {
-        const file = Gio.File.new_for_path(FNLOCK_PATH);
-        const file_info = file.query_info(
-            'standard::*',
-            Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
-            null
-        );
-        if (file_info.get_is_symlink()) {
-            const target_file = Gio.File.new_for_path(
-                file_info.get_symlink_target()
-            );
-            this._fnlock_monitor_target = target_file.monitor_file(
-                Gio.FileMonitorFlags.NONE,
+        try {
+            const file = Gio.File.new_for_path(FNLOCK_PATH);
+            const file_info = file.query_info(
+                'standard::*',
+                Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
                 null
             );
-            this._fnlock_monitor_target.connect('changed', () => {
-                this.update_fnlock_icon();
-            });
+            if (file_info.get_is_symlink()) {
+                const target_file = Gio.File.new_for_path(
+                    file_info.get_symlink_target()
+                );
+                this._fnlock_monitor_target = target_file.monitor_file(
+                    Gio.FileMonitorFlags.NONE,
+                    null
+                );
+                this._fnlock_monitor_target.connect('changed', () => {
+                    this.update_fnlock_icon();
+                });
+            }
+        } catch (e) {
+            console.error(`Error updating fn_lock monitor: ${e}`);
+            return false;
         }
     }
 
