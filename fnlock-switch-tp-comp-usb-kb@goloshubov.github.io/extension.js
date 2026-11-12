@@ -85,7 +85,7 @@ export default class FnLockExtension extends Extension {
                     Gio.FileMonitorFlags.NONE,
                     null
                 );
-                this._fnlock_monitor_target.connect('changed', () => {
+                this._handlerid_mon_tgt = this._fnlock_monitor_target.connect('changed', () => {
                     this.update_fnlock_icon();
                 });
             }
@@ -112,9 +112,12 @@ export default class FnLockExtension extends Extension {
 
         this._button.add_child(this._icon);
         this._button.clear_actions();
-        this._button.connect('button-press-event', () => {
-            this.switch_fnlock_state();
-        });
+        this._handlerid_button = this._button.connect(
+            'button-press-event',
+            () => {
+                this.switch_fnlock_state();
+            }
+        );
 
         Main.panel.addToStatusArea('FnLock', this._button);
 
@@ -135,7 +138,7 @@ export default class FnLockExtension extends Extension {
             Gio.FileMonitorFlags.NONE,
             null
         );
-        this._fnlock_monitor.connect('changed', () => {
+        this._handlerid_mon = this._fnlock_monitor.connect('changed', () => {
             this.update_fnlock_monitor();
             //this.update_fnlock_icon();
         });
@@ -159,6 +162,8 @@ export default class FnLockExtension extends Extension {
 
     disable() {
         Main.wm.removeKeybinding('keybinding');
+        this._button.disconnect(this._handlerid_button);
+        this._handlerid_button = null;
         this._button?.destroy();
         this._button = null;
         this._icon?.destroy();
@@ -167,9 +172,13 @@ export default class FnLockExtension extends Extension {
         this._gicon_unlocked = null;
         this._gicon_none = null;
         this._settings = null;
+        this._fnlock_monitor.disconnect(this._handlerid_mon);
+        this._handlerid_mon = null;
         this._fnlock_monitor.cancel();
         this._fnlock_monitor = null;
         if (this._fnlock_monitor_target) {
+            this._fnlock_monitor_target.disconnect(this._handlerid_mon_tgt)
+            this._handlerid_mon_tgt = null;
             this._fnlock_monitor_target.cancel();
             this._fnlock_monitor_target = null;
         }
