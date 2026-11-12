@@ -28,7 +28,6 @@ export default class FnLockExtension extends Extension {
     async get_fnlock_state() {
         try {
             const file = Gio.File.new_for_path(FNLOCK_PATH);
-            //const [ok, contents] = file.load_contents_(null);
             const [contents, etag] = await file.load_contents_async(null);
             const decoder = new TextDecoder('utf-8');
             const contents_string = decoder.decode(contents);
