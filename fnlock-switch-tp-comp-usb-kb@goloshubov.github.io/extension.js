@@ -14,8 +14,8 @@ const NOFNLOCK_ICON = 'none.svg';
 const FNLOCK_PATH = '/dev/fnlock-switch';
 
 export default class FnLockExtension extends Extension {
-    update_fnlock_icon() {
-        const state = this.get_fnlock_state();
+    async update_fnlock_icon() {
+        const state = await this.get_fnlock_state();
         if (state == '1') {
             this._icon.set_gicon(this._gicon_locked);
         } else if (state == '0') {
@@ -25,10 +25,11 @@ export default class FnLockExtension extends Extension {
         }
     }
 
-    get_fnlock_state() {
+    async get_fnlock_state() {
         try {
             const file = Gio.File.new_for_path(FNLOCK_PATH);
-            const [ok, contents] = file.load_contents(null);
+            //const [ok, contents] = file.load_contents_(null);
+            const [contents, etag] = await file.load_contents_async(null);
             const decoder = new TextDecoder('utf-8');
             const contents_string = decoder.decode(contents);
             return contents_string.trim();
@@ -59,8 +60,9 @@ export default class FnLockExtension extends Extension {
         }
     }
 
-    switch_fnlock_state() {
-        const state = this.get_fnlock_state();
+    async switch_fnlock_state() {
+        const state = await this.get_fnlock_state();
+        log('switch_fnlock_state: ', state);
         if (state !== null) {
             const state_new = state === '1' ? '0' : '1';
             this.set_fnlock_state(state_new);
